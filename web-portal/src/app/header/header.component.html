@@ -1,0 +1,52 @@
+<header>
+    <img *ngIf="!loginPageStatus" src="assets/logo.png" alt="cts png">
+
+    <!-- <img class="rounded mx-auto d-block" src="assets/error-404.png" alt=""> -->
+    <!-- <h2 *ngIf="loginPageStatus" class="logo">Audit Management</h2> -->
+    
+    <nav class="navigation">
+      <!-- <a *ngIf="loginStatus" (click)="redirect()">Responses</a> -->
+      <a [routerLink]="['/responses']" *ngIf="loginStatus" >Responses</a>
+      <a [routerLink]="['/checklist']" *ngIf="loginStatus" >Check List</a>
+      <!-- <button class="btnLogout-popup" *ngIf="loginStatus" >Download Pdf</button> -->
+      
+      <!-- <a href="#" *ngIf="!loginStatus">Request Access</a> -->
+      <!-- <a href="#">Contact</a> -->
+      <button class="btnLogout-popup" *ngIf="loginStatus" (click)="logout()" >Logout</button>
+      <button class="btnLogout-popup" *ngIf="(href!=='/login' && href!=='/error' && !loginStatus)"  (click)="login()">Login</button>
+      
+    </nav>
+  </header>
+
+
+
+<!-- ------------------------------------------------ -->
+
+
+<!-- <nav class="navbar navbar-dark bg-dark">
+    <div class="container">
+        <div class="navbar-header">
+            <div class="navbar-brand">Audit-Management</div>
+        </div> -->
+
+        <!-- <ul class="navbar-nav m text-white">
+            <li class="navbar-item ">{{ username }}</li>
+        </ul> -->
+<!-- 
+        <span class="navbar-text float-right mr-sm-2">
+            {{ Status }}
+        </span> -->
+
+<!-- 
+        <div class="text-white ms-auto" *ngIf="loginStatus">
+            Welcome, {{username}} &nbsp;&nbsp;&nbsp;&nbsp;
+        </div> -->
+
+        <!-- <button class="btn btn-outline-info my-2 my-sm-0" *ngIf="loginStatus" (click)="logout()">Logout</button> -->
+        <!-- <button class="btn btn-outline-info my-2 my-sm-0" (click)="logout()">Logout</button> -->
+
+        <!-- <ul class="navbar-nav mr-auto text-white"> <li class="navbar-item" (click)="logout()">Logout</li> </ul> -->
+<!--         
+    </div>
+</nav> -->
+

@@ -1,0 +1,210 @@
+<app-header></app-header>
+
+<!-- <div class="col-md-8 tab" id="htmlData">
+    <table class="table table-bordered">
+        <tr class="table-primary">
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+        </tr>
+        <tr *ngFor="let user of USERS">
+            <th>{{user.id}}</th>
+            <td>{{user.name}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.phone}}</td>
+        </tr>
+    </table>
+</div> -->
+
+
+<div class="container">
+
+    <div class="float-child-1">
+        <div class="box-1">
+            <div class="box-1-1">
+
+                <div>
+                    <h3 class="text-center"> Overview</h3>
+
+                    <br>
+                    <br>
+                    <table class="text-center tab">
+
+                        <thead>
+
+                            <tr>
+                                <th>
+                                    <div class="c100 red" [ngClass]="{
+                                        'p50': criticalPer===50,
+                                        'p100': criticalPer===100
+                                    }">
+                                        <span> {{criticalPer}} %</span>
+                                        <div class="slice">
+                                            <div class="bar"></div>
+                                            <div class="fill"></div>
+                                        </div>
+                                    </div>
+                                </th>
+
+                                <th>
+                                    <div class="c100 green" [ngClass]="{
+                                        'p50': compliantPer ===50,
+                                        'p100': compliantPer ===100
+                                    }">
+                                        <span>{{compliantPer}} %</span>
+                                        <div class="slice">
+                                            <div class="bar"></div>
+                                            <div class="fill"></div>
+                                        </div>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="c100" [ngClass]="{
+                                        'p50': unresponsivePer===50,
+                                        'p100': unresponsivePer ===100
+                                    }">
+                                        <span>{{unresponsivePer}} %</span>
+                                        <div class="slice">
+                                            <div class="bar"></div>
+                                            <div class="fill"></div>
+                                        </div>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <table class="text-center">
+                                        <thead>
+                                            <tr>
+                                                <th>Critical &nbsp; Records</th>
+                                            </tr>
+                                            <hr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th>{{critical}} /2</th>
+                                            </tr>
+                                            <tr>
+                                                <th>Records</th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+
+                                <td>
+                                    <table class="text-center">
+                                        <thead>
+                                            <tr>
+                                                <th>Compliant Records</th>
+                                            </tr>
+                                            <hr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th>{{compliant}} /2</th>
+                                            </tr>
+                                            <tr>
+                                                <th>Records</th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+
+                                <td>
+                                    <table class="text-center">
+                                        <thead>
+                                            <tr>
+                                                <th>Unresponsive Records</th>
+                                            </tr>
+                                            <hr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th>{{unresponsive}} /2</th>
+                                            </tr>
+                                            <tr>
+                                                <th>Records</th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="float-child-2">
+        <div class="box-2">
+            <div class="box-2-2">
+
+                <div class="w3-container">
+                    <div >
+                        <br>
+                        <h3>Audited Records</h3>
+                        <br>
+                        <br>
+
+                        <h5 *ngIf="responses.length === 0">No Records Found</h5>
+                        <table *ngIf="responses.length > 0">
+                            <tbody>
+                                <tr *ngFor="let response of responses; let i = index">
+                                    <td>
+
+                                        <!-- <h5 *ngIf="responses.length===0" class="text-center"><Strong>No Records Found</Strong></h5> -->
+                                        <div class="box">
+                                            <div class="column">
+                                                <i class="fa-sharp fa-solid fa-circle-check icon"
+                                                    *ngIf="response.project_execution_status === 'GREEN'"
+                                                    style="color: #3ce000;"></i>
+                                                <i class="fa-solid fa-triangle-exclamation icon"
+                                                    *ngIf="response.project_execution_status === 'RED'"
+                                                    style="color: #dc1818;"></i>
+                                            </div>
+
+                                            <div>
+                                                <Strong>{{response.audit_type}}</Strong>
+                                                <div class="box1"> <strong>Remedial Action -</strong>
+                                                    {{response.remedial_action_duration}}</div>
+                                                <div class="box2">{{response.project_name}}
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    {{response.creation_date_and_time}}</div>
+                                            </div>
+                                        </div>
+                                        <div class="w3-light-grey">
+                                            <div class="w3-red" *ngIf="response.project_execution_status === 'RED'"
+                                                style="height:10px;width:125%"></div>
+                                            <div class="w3-green" *ngIf="response.project_execution_status === 'GREEN'"
+                                                style="height:10px;width:125%"></div>
+                                        </div>
+                                        <br>
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+
+                        <!-- <div class="col-md-4 text-center">
+                            <button class=" btn btn-success btn-block" (click)="openPDF()">Download PDF</button>
+                        </div> -->
+
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
